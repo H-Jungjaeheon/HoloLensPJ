@@ -17,8 +17,22 @@ MonoBehaviour:
   recognitionConfidenceLevel: 2
   speechCommands:
   - localizationKey: 
-    keyword: Fire
-    keyCode: 113
+    keyword: GameStart
+    keyCode: 282
+    action:
+      id: 2
+      description: Menu
+      axisConstraint: 2
+  - localizationKey: 
+    keyword: GameEnd
+    keyCode: 283
+    action:
+      id: 2
+      description: Menu
+      axisConstraint: 2
+  - localizationKey: 
+    keyword: Nuclear
+    keyCode: 284
     action:
       id: 2
       description: Menu
