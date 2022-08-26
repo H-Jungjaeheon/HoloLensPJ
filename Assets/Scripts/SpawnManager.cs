@@ -25,7 +25,9 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Spawn();    }
+        Spawn();    
+    }
+
     private void Spawn()
     {
         if (GameManager.Instance.IsGameStart)

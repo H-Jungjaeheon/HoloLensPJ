@@ -26,6 +26,17 @@ public class TitleManager : Singleton<TitleManager>
     {
         StartCoroutine(GameGuideTextAnimStart());
     }
+
+    public void GameStart()
+    {
+        StartCoroutine(GameStartSetting());
+    }
+
+    public void GameOver()
+    {
+        print("게임오버");
+    }
+
     IEnumerator GameGuideTextAnimStart()
     {
         WaitForSeconds waitForObjTruing = new WaitForSeconds(2.5f);
@@ -38,4 +49,12 @@ public class TitleManager : Singleton<TitleManager>
             yield return waitForObjFalsing;
         }
     }
+
+    IEnumerator GameStartSetting()
+    {
+        GameManager.Instance.Hp = 3;
+        TitleObj.SetActive(false);
+        yield return null;
+    }
+
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpeechManager : MonoBehaviour
 {
-    public GameObject cube;
-
     public void OnOffCube()
     {
 
@@ -19,12 +17,17 @@ public class SpeechManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            GameStartSpeech();
+        }
     }
 
     public void GameStartSpeech()
     {
-        cube.SetActive(false);
-        GameManager.Instance.IsGameStart = true;
+        if (GameManager.Instance.IsGameStart == false)
+        {
+            GameManager.Instance.IsGameStart = true;
+        }
     }
 }
