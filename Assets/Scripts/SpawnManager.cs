@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Spawn()
     {
-        if (GameManager.Instance.IsGameStart)
+        if (GameManager.Instance.nowGameState == GameState.Playing)
         {
             nowSpawnCoolTime += Time.deltaTime;
             if (nowSpawnCoolTime >= maxSpawnCoolTime)

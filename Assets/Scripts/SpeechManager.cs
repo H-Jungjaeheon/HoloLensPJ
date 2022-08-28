@@ -25,9 +25,8 @@ public class SpeechManager : MonoBehaviour
 
     public void GameStartSpeech()
     {
-        if (GameManager.Instance.IsGameStart == false)
-        {
-            GameManager.Instance.IsGameStart = true;
-        }
+        if (GameManager.Instance.nowGameState != GameState.Main) return;
+        TitleManager.Instance.TitleObj.SetActive(false);
+        GameManager.Instance.ChangeGameState(GameState.GunChoose);
     }
 }

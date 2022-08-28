@@ -9,7 +9,7 @@ public class BtnFollwer : MonoBehaviour
     private GameObject dest;
     [SerializeField]
     private GameObject lookAtDest;
-    // Start is called before the first frame update
+    
     void Start()
     {
         

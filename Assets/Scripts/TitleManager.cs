@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TitleManager : Singleton<TitleManager>
 {
-    [SerializeField]
-    private GameObject TitleObj;
+    public GameObject TitleObj;
 
     [SerializeField]
     private GameObject GameStartGuideObj;
@@ -41,7 +40,7 @@ public class TitleManager : Singleton<TitleManager>
     {
         WaitForSeconds waitForObjTruing = new WaitForSeconds(2.5f);
         WaitForSeconds waitForObjFalsing = new WaitForSeconds(1);
-        while (GameManager.Instance.IsGameStart == false)
+        while (GameManager.Instance.nowGameState == GameState.Main)
         {
             GameStartGuideObj.SetActive(true);
             yield return waitForObjTruing;
@@ -52,6 +51,7 @@ public class TitleManager : Singleton<TitleManager>
 
     IEnumerator GameStartSetting()
     {
+        GameManager.Instance.ChangeGameState(GameState.GunChoose);
         GameManager.Instance.Hp = 3;
         TitleObj.SetActive(false);
         yield return null;

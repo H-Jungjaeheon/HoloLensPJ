@@ -1,32 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public enum GameState
+{
+    Main,
+    GunChoose,
+    Playing,
+    GameOver,
+    GameClear
+}
+
+public enum GunState
+{
+    MachineGun,
+    SniperRifle,
+    RocketLauncher
+}
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField]
-    private bool isGameStart;
-    public bool IsGameStart
-    {
-        get { return isGameStart; }
-        set 
-        {
-            if (value == true)
-            {
-                TitleManager.Instance.GameStart();
-            }
-            isGameStart = value;
-        }
-    }
-
-    [SerializeField]
-    private bool isDead;
-    public bool IsDead
-    {
-        get { return isDead; }
-        set { isDead = value; }
-    }
-
     [SerializeField]
     private int hp;
     public int Hp
@@ -41,18 +35,63 @@ public class GameManager : Singleton<GameManager>
             hp = value;
         }
     }
-    
 
+    [SerializeField]
+    private GameObject buttonObj;
+
+    [SerializeField]
+    private GameObject[] gunObject;
+
+    public Action<GunState> gunSelect;
+
+    [HideInInspector]
+    public GameState nowGameState;
+    private GunState nowGunState;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        StartSetting();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void StartSetting()
+    {
+        nowGameState = GameState.Main;
+        gunSelect = (GunState) => { SelectGun(GunState); };
+    }
+
+    public void ChangeGameState(GameState changeGameState)
+    {
+        switch (changeGameState)
+        {
+            case GameState.Main:
+                nowGameState = GameState.Main;
+                break;
+            case GameState.GunChoose:
+                nowGameState = GameState.GunChoose;
+                buttonObj.SetActive(true);
+                break;
+            case GameState.Playing:
+                nowGameState = GameState.Playing;
+                buttonObj.SetActive(false);
+                break;
+            case GameState.GameOver:
+                nowGameState = GameState.GameOver;
+                break;
+            case GameState.GameClear:
+                nowGameState = GameState.GameClear;
+                break;
+        }
+    }
+
+    private void SelectGun(GunState chooseGun)
+    {
+        nowGunState = chooseGun;
+        gunObject[(int)chooseGun].SetActive(true);
     }
 }
