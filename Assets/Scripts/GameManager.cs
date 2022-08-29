@@ -37,9 +37,6 @@ public class GameManager : Singleton<GameManager>
     }
 
     [SerializeField]
-    private GameObject buttonObj;
-
-    [SerializeField]
     private GameObject[] gunObject;
 
     public Action<GunState> gunSelect;
@@ -73,12 +70,12 @@ public class GameManager : Singleton<GameManager>
                 nowGameState = GameState.Main;
                 break;
             case GameState.GunChoose:
+                ButtonManager.Instance.ButtonUpDownAnimCoroutine(true, -2f);
                 nowGameState = GameState.GunChoose;
-                buttonObj.SetActive(true);
                 break;
             case GameState.Playing:
+                ButtonManager.Instance.ButtonUpDownAnimCoroutine(false, -5f);
                 nowGameState = GameState.Playing;
-                buttonObj.SetActive(false);
                 break;
             case GameState.GameOver:
                 nowGameState = GameState.GameOver;
