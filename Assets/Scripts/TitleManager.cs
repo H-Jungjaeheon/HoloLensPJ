@@ -51,7 +51,6 @@ public class TitleManager : Singleton<TitleManager>
 
     IEnumerator GameStartSetting()
     {
-        GameManager.Instance.ChangeGameState(GameState.GunChoose);
         GameManager.Instance.Hp = 3;
         TitleObj.SetActive(false);
         yield return null;

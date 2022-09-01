@@ -6,7 +6,6 @@ using System;
 public enum GameState
 {
     Main,
-    GunChoose,
     Playing,
     GameOver,
     GameClear
@@ -15,7 +14,7 @@ public enum GameState
 public enum GunState
 {
     MachineGun,
-    SniperRifle,
+    ShotGun,
     RocketLauncher
 }
 
@@ -36,6 +35,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public GameObject PlayerObj;
+
     [SerializeField]
     private GameObject[] gunObject;
 
@@ -43,7 +44,10 @@ public class GameManager : Singleton<GameManager>
 
     [HideInInspector]
     public GameState nowGameState;
-    private GunState nowGunState;
+    [HideInInspector]
+    public GunState nowGunState;
+    [HideInInspector]
+    public bool isGunChangeAble;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,7 +63,8 @@ public class GameManager : Singleton<GameManager>
     public void StartSetting()
     {
         nowGameState = GameState.Main;
-        gunSelect = (GunState) => { SelectGun(GunState); };
+        gunSelect = (GunState) => { ChangeGun(GunState); };
+        isGunChangeAble = true;
     }
 
     public void ChangeGameState(GameState changeGameState)
@@ -68,22 +73,41 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.Main:
                 nowGameState = GameState.Main;
+                TitleManager.Instance.TitleObj.SetActive(true);
                 break;
             case GameState.Playing:
                 nowGameState = GameState.Playing;
+                ChangeGun(GunState.MachineGun);
                 break;
-            case GameState.GameOver:
+            case GameState.GameOver: //게임 오버 캔버스 창 띄우기
                 nowGameState = GameState.GameOver;
                 break;
-            case GameState.GameClear:
+            case GameState.GameClear: //게임 클리어 캔버스 창 띄우기
                 nowGameState = GameState.GameClear;
                 break;
         }
     }
 
-    private void SelectGun(GunState chooseGun)
+    public void ChangeGun(GunState chooseGun)
     {
+        gunObject[(int)nowGunState].SetActive(false);
         nowGunState = chooseGun;
         gunObject[(int)chooseGun].SetActive(true);
+    }
+    public void GunChangeCoolTimeCoroutine()
+    {
+        StartCoroutine(GunChangeCoolTime());
+    }
+
+    IEnumerator GunChangeCoolTime()
+    {
+        float nowCoolTime = 0;
+        isGunChangeAble = false;
+        while (nowCoolTime < 10)
+        {
+            nowCoolTime += Time.deltaTime;
+            yield return null;
+        }
+        isGunChangeAble = true;
     }
 }
