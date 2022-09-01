@@ -29,4 +29,6 @@ public class SpeechManager : MonoBehaviour
         TitleManager.Instance.TitleObj.SetActive(false);
         GameManager.Instance.ChangeGameState(GameState.GunChoose);
     }
+
+
 }

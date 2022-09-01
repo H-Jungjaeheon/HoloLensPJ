@@ -31,9 +31,16 @@ MonoBehaviour:
       description: Menu
       axisConstraint: 2
   - localizationKey: 
-    keyword: Nuclear
+    keyword: RocketLauncher
     keyCode: 284
     action:
       id: 2
+      description: Menu
+      axisConstraint: 2
+  - localizationKey: 
+    keyword: Shotgun
+    keyCode: 285
+    action:
+      id: 0
       description: Menu
       axisConstraint: 2

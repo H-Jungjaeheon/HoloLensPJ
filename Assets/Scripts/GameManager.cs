@@ -69,12 +69,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.Main:
                 nowGameState = GameState.Main;
                 break;
-            case GameState.GunChoose:
-                ButtonManager.Instance.ButtonUpDownAnimCoroutine(true, -2f);
-                nowGameState = GameState.GunChoose;
-                break;
             case GameState.Playing:
-                ButtonManager.Instance.ButtonUpDownAnimCoroutine(false, -5f);
                 nowGameState = GameState.Playing;
                 break;
             case GameState.GameOver:
