@@ -14,6 +14,8 @@ public enum SpeechCommand
 
 public class SpeechManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gunHitBoxObj;
 
     void Update()
     {
@@ -56,11 +58,13 @@ public class SpeechManager : MonoBehaviour
                     {
                         gameManagerInstance.GunChangeCoolTimeCoroutine();
                         gameManagerInstance.ChangeGun(GunState.ShotGun);
+                        gunHitBoxObj.GetComponent<Gun>().ChangeHitBoxSize(false);
                     }
                     else
                     {
                         gameManagerInstance.GunChangeCoolTimeCoroutine();
                         gameManagerInstance.ChangeGun(GunState.MachineGun);
+                        gunHitBoxObj.GetComponent<Gun>().ChangeHitBoxSize(true);
                     }
                 }
                 break;

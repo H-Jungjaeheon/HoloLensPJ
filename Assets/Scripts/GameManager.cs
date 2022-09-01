@@ -49,7 +49,6 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector]
     public bool isGunChangeAble;
 
-    [HideInInspector]
     public List<GameObject> enemyList = new List<GameObject>();
 
     // Start is called before the first frame update

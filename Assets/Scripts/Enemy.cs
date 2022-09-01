@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    [SerializeField]
     private int hp;
     public int Hp
     {
