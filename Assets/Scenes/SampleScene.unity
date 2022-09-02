@@ -2138,7 +2138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbae7393ed2767a4d9177ec9e087a75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunHitBoxCollider: {fileID: 0}
   colliderChangeSize:
   - {x: 1, y: 0.85, z: 21.4}
   - {x: 1, y: 0.85, z: 10.7}

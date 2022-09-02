@@ -62,13 +62,27 @@ public class Gun : MonoBehaviour
             yield return waitShotGun;
             nowBulletCount[(int)GunState.ShotGun]--;
         }
+
+        if (gameManagerInstance.nowGunState == GunState.MachineGun && nowBulletCount[(int)GunState.MachineGun] <= 0)
+        {
+
+        }
+        else if(gameManagerInstance.nowGunState == GunState.ShotGun&& nowBulletCount[(int)GunState.ShotGun] <= 0)
+        {
+
+        }
+
         isShooting = false;
     }
 
     private void StartSettings()
     {
-        maxBulletCount = 50;
-        nowBulletCount = maxBulletCount;
+        maxBulletCount[(int)GunState.MachineGun] = 35;
+        maxBulletCount[(int)GunState.ShotGun] = 15;
+
+        nowBulletCount[(int)GunState.MachineGun] = maxBulletCount[(int)GunState.MachineGun];
+        nowBulletCount[(int)GunState.ShotGun] = maxBulletCount[(int)GunState.ShotGun];
+
         gunHitBoxCollider = GetComponent<BoxCollider>();
         waitMachineGun = new WaitForSeconds(0.2f);
         waitShotGun = new WaitForSeconds(1f);
