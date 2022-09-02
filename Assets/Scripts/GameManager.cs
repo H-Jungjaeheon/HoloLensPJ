@@ -37,8 +37,7 @@ public class GameManager : Singleton<GameManager>
 
     public GameObject PlayerObj;
 
-    [SerializeField]
-    private GameObject[] gunObject;
+    public GameObject[] gunObject;
 
     public Action<GunState> gunSelect;
 
