@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField]
     private BoxCollider gunHitBoxCollider;
 
     [SerializeField]
@@ -12,8 +13,8 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private Vector3[] colliderChangeCenter;
 
-    private int[] maxBulletCount;
-    private int[] nowBulletCount;
+    private int[] maxBulletCount = new int[2];
+    private int[] nowBulletCount = new int[2];
 
     private bool isShooting;
 
@@ -83,7 +84,6 @@ public class Gun : MonoBehaviour
         nowBulletCount[(int)GunState.MachineGun] = maxBulletCount[(int)GunState.MachineGun];
         nowBulletCount[(int)GunState.ShotGun] = maxBulletCount[(int)GunState.ShotGun];
 
-        gunHitBoxCollider = GetComponent<BoxCollider>();
         waitMachineGun = new WaitForSeconds(0.2f);
         waitShotGun = new WaitForSeconds(1f);
     }

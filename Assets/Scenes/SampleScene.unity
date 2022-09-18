@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpawnCoolTime: 5
   nowSpawnCoolTime: 0
-  enemyObj: {fileID: 3182317144764027008, guid: c08e2c8586c7af84aa1b02792575b0a5, type: 3}
+  enemyObj: {fileID: 1384250625863279300, guid: c08e2c8586c7af84aa1b02792575b0a5, type: 3}
   enemySpawnerObjs:
   - {fileID: 1019519264}
   - {fileID: 1467846261}
@@ -2138,6 +2138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbae7393ed2767a4d9177ec9e087a75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunHitBoxCollider: {fileID: 1667218228}
   colliderChangeSize:
   - {x: 1, y: 0.85, z: 21.4}
   - {x: 1, y: 0.85, z: 10.7}

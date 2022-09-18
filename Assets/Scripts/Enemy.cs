@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     }
 
     private GameObject playerObj;
+    private Vector3 minusPos = new Vector3(0, 1.5f, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,8 @@ public class Enemy : MonoBehaviour
     }
     private void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, playerObj.transform.position, Time.deltaTime * speed);
+        transform.LookAt(playerObj.transform);
+        transform.position = Vector3.MoveTowards(transform.position, playerObj.transform.position - minusPos, Time.deltaTime * speed);
     }
 
     private void OnTriggerEnter(Collider other)
